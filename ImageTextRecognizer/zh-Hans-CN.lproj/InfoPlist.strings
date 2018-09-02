@@ -1,0 +1,11 @@
+/* 
+  Info-plist.string.strings
+  ImageTextRecognizer
+
+  Created by Tom Shen on 8/14/16.
+  Copyright © 2016 Tom and Jerry. All rights reserved.
+*/
+
+CFBundleDisplayName = "旅行翻译助手";
+
+NSCameraUsageDescription = "这个软件用照相机拍照并识别照片里面的字";
