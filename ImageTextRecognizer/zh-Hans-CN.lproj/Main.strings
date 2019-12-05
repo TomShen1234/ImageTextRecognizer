@@ -1,0 +1,150 @@
+
+/* Class = "UILabel"; text = "法语"; ObjectID = "0tz-Cn-RCE"; */
+"0tz-Cn-RCE.text" = "法语";
+
+/* Class = "UITableViewSection"; headerTitle = "识别语言:"; ObjectID = "3n9-j2-Id0"; */
+"3n9-j2-Id0.headerTitle" = "识别语言:";
+
+/* Class = "UINavigationItem"; title = "识别及翻译"; ObjectID = "5C2-90-3FK"; */
+"5C2-90-3FK.title" = "识别及翻译";
+
+/* Class = "UILabel"; text = "越南语"; ObjectID = "5aV-4f-KQa"; */
+"5aV-4f-KQa.text" = "越南语";
+
+/* Class = "UILabel"; text = "日本语"; ObjectID = "7bK-5S-c6P"; */
+"7bK-5S-c6P.text" = "日本语";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "7mx-uk-EAS"; */
+"7mx-uk-EAS.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "开启翻译："; ObjectID = "7zY-7S-NMJ"; */
+"7zY-7S-NMJ.text" = "开启翻译：";
+
+/* Class = "UILabel"; text = "Tesseract Copyright"; ObjectID = "8JY-1g-c0j"; */
+"8JY-1g-c0j.text" = "Tesseract Copyright";
+
+/* Class = "UILabel"; text = "Copyright (c) 2017 Tom Shen. All Rights Reserved"; ObjectID = "9AQ-oh-aDy"; */
+"9AQ-oh-aDy.text" = "Copyright (c) 2019 Tom Shen. All Rights Reserved";
+
+/* Class = "UILabel"; text = "简体中文"; ObjectID = "9az-sQ-sRf"; */
+"9az-sQ-sRf.text" = "简体中文";
+
+/* Class = "UILabel"; text = "关于"; ObjectID = "AhY-ct-EZG"; */
+"AhY-ct-EZG.text" = "关于";
+
+/* Class = "UILabel"; text = "韩语"; ObjectID = "B44-GC-bF3"; */
+"B44-GC-bF3.text" = "韩语";
+
+/* Class = "UITableViewSection"; headerTitle = "翻译"; ObjectID = "BB7-th-zDK"; */
+"BB7-th-zDK.headerTitle" = "翻译";
+
+/* Class = "UILabel"; text = "版本"; ObjectID = "Bfp-an-shI"; */
+"Bfp-an-shI.text" = "版本";
+
+/* Class = "UIBarButtonItem"; title = "完成"; ObjectID = "C8U-hG-0uF"; */
+"C8U-hG-0uF.title" = "完成";
+
+/* Class = "UITableViewSection"; headerTitle = "翻译到："; ObjectID = "CNn-xc-W4o"; */
+"CNn-xc-W4o.headerTitle" = "翻译到：";
+
+/* Class = "UILabel"; text = "第三方库"; ObjectID = "Cyu-oJ-7KU"; */
+"Cyu-oJ-7KU.text" = "第三方库";
+
+/* Class = "UILabel"; text = "西班牙语"; ObjectID = "Dzm-Y6-Cuv"; */
+"Dzm-Y6-Cuv.text" = "西班牙语";
+
+/* Class = "UILabel"; text = "韩语"; ObjectID = "GzP-U0-kLh"; */
+"GzP-U0-kLh.text" = "韩语";
+
+/* Class = "UILabel"; text = "德语"; ObjectID = "HKk-7e-gFu"; */
+"HKk-7e-gFu.text" = "德语";
+
+/* Class = "UIBarButtonItem"; title = "重置框"; ObjectID = "KWR-He-QO0"; */
+"KWR-He-QO0.title" = "重置框";
+
+/* Class = "UILabel"; text = "英语"; ObjectID = "Kdk-Nr-wWd"; */
+"Kdk-Nr-wWd.text" = "英语";
+
+/* Class = "UITableViewSection"; headerTitle = "声明"; ObjectID = "LOT-zq-Obq"; */
+"LOT-zq-Obq.headerTitle" = "声明";
+
+/* Class = "UINavigationItem"; title = "设置"; ObjectID = "NIu-uj-vu9"; */
+"NIu-uj-vu9.title" = "设置";
+
+/* Class = "UILabel"; text = "阿拉伯语"; ObjectID = "OGa-vg-gTg"; */
+"OGa-vg-gTg.text" = "阿拉伯语";
+
+/* Class = "UILabel"; text = "西班牙语"; ObjectID = "Pta-H0-RJ0"; */
+"Pta-H0-RJ0.text" = "西班牙语";
+
+/* Class = "UILabel"; text = "简体中文"; ObjectID = "RZC-Fg-9p1"; */
+"RZC-Fg-9p1.text" = "简体中文";
+
+/* Class = "UILabel"; text = "马来西亚语"; ObjectID = "SEG-o3-S4T"; */
+"SEG-o3-S4T.text" = "马来西亚语";
+
+/* Class = "UILabel"; text = "意大利语"; ObjectID = "TFq-Sz-EB6"; */
+"TFq-Sz-EB6.text" = "意大利语";
+
+/* Class = "UIBarButtonItem"; title = "将框拖到要识别的字中"; ObjectID = "VU7-wf-00P"; */
+"VU7-wf-00P.title" = "将框拖到要识别的字中";
+
+/* Class = "UINavigationItem"; title = "Use of Libraries"; ObjectID = "Vlb-Ql-0D3"; */
+"Vlb-Ql-0D3.title" = "Use of Libraries";
+
+/* Class = "UILabel"; text = "英语"; ObjectID = "X1Q-jj-dXv"; */
+"X1Q-jj-dXv.text" = "英语";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "YD3-8H-xKr"; */
+"YD3-8H-xKr.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIBarButtonItem"; title = "1x"; ObjectID = "YSF-F5-840"; */
+"YSF-F5-840.title" = "1x";
+
+/* Class = "UILabel"; text = "阿拉伯语"; ObjectID = "ZpS-zo-gBg"; */
+"ZpS-zo-gBg.text" = "阿拉伯语";
+
+/* Class = "UILabel"; text = "Version (Build)"; ObjectID = "abc-Di-BeH"; */
+"abc-Di-BeH.text" = "Version (Build)";
+
+/* Class = "UILabel"; text = "意大利语"; ObjectID = "bCy-8r-3sn"; */
+"bCy-8r-3sn.text" = "意大利语";
+
+/* Class = "UILabel"; text = "正在加载相机..."; ObjectID = "bNf-5u-toF"; */
+"bNf-5u-toF.text" = "正在加载相机...";
+
+/* Class = "UILabel"; text = "法语"; ObjectID = "cnT-ER-Nvx"; */
+"cnT-ER-Nvx.text" = "法语";
+
+/* Class = "UILabel"; text = "日本语"; ObjectID = "fZ8-c6-Jd2"; */
+"fZ8-c6-Jd2.text" = "日本语";
+
+/* Class = "UILabel"; text = "泰语"; ObjectID = "iku-vh-57d"; */
+"iku-vh-57d.text" = "泰语";
+
+/* Class = "UILabel"; text = "软件制作：Tom Shen，BCIS 学生。"; ObjectID = "nJp-V1-qWh"; */
+"nJp-V1-qWh.text" = "软件制作：Tom Shen，BCIS 学生。";
+
+/* Class = "UILabel"; text = "德语"; ObjectID = "pHq-2V-hsh"; */
+"pHq-2V-hsh.text" = "德语";
+
+/* Class = "UILabel"; text = "印度尼西亚语"; ObjectID = "qBY-Fa-NUw"; */
+"qBY-Fa-NUw.text" = "印度尼西亚语";
+
+/* Class = "UIBarButtonItem"; title = "识别"; ObjectID = "sFV-Ss-1HQ"; */
+"sFV-Ss-1HQ.title" = "识别";
+
+/* Class = "UILabel"; text = "马来西亚语"; ObjectID = "sNt-yP-a70"; */
+"sNt-yP-a70.text" = "马来西亚语";
+
+/* Class = "UILabel"; text = "泰语"; ObjectID = "tUq-K0-iEw"; */
+"tUq-K0-iEw.text" = "泰语";
+
+/* Class = "UILabel"; text = "印度尼西亚语"; ObjectID = "vOJ-TC-m8c"; */
+"vOJ-TC-m8c.text" = "印度尼西亚语";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "vQh-41-ilD"; */
+"vQh-41-ilD.title" = "About";
+
+/* Class = "UILabel"; text = "越南语"; ObjectID = "xja-FP-lhc"; */
+"xja-FP-lhc.text" = "越南语";

@@ -18,7 +18,7 @@ class SettingsViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateSwitch), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSwitch), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -115,10 +115,10 @@ class SettingsViewController: UITableViewController {
             for i in 0..<totalCells {
                 let newIndexPath = IndexPath(row: i, section: (indexPath as NSIndexPath).section)
                 let cell = self.tableView(tableView, cellForRowAt: newIndexPath)
-                cell.accessoryType = UITableViewCellAccessoryType.none
+                cell.accessoryType = UITableViewCell.AccessoryType.none
             }
             let cell = self.tableView(tableView, cellForRowAt: indexPath)
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
             
             if (indexPath as NSIndexPath).section == 1 {
                 let languageCode = processLanguage((indexPath as NSIndexPath).row, codeType: CodeType.tesseract)

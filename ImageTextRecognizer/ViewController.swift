@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         
         flashButton.image = UIImage(named: "NoFlash")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidResume), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidResume), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(enableTranslationToggled), name: settingsViewControllerTranslationToggleDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(translationLanguageChanged), name: settingsViewControllerTranslateLanguageChangeNotification, object: nil)
@@ -125,7 +125,7 @@ class ViewController: UIViewController {
             //if identifier != "iPhone9,2" && identifier != "iPhone9,4" {
             if telephotoCaptureDevice == nil {
                 var items = self.mainNavigationItem.leftBarButtonItems
-                let index = items?.index(of: self.telephotoButton)
+                let index = items?.firstIndex(of: self.telephotoButton)
                 items?.remove(at: index!)
                 self.mainNavigationItem.leftBarButtonItems = items
             } else {
@@ -134,7 +134,7 @@ class ViewController: UIViewController {
             
             if (self.captureDevice?.hasTorch)! == false {
                 var items = self.mainNavigationItem.leftBarButtonItems
-                let index = items?.index(of: self.flashButton)
+                let index = items?.firstIndex(of: self.flashButton)
                 items?.remove(at: index!)
                 self.mainNavigationItem.leftBarButtonItems = items
             }
@@ -331,7 +331,7 @@ class ViewController: UIViewController {
     }
     
     @objc func openSettings() {
-        UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     func beginSession() {
@@ -1220,7 +1220,7 @@ extension ViewController: UITextViewDelegate {
             noTextFound = false
         }
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: {
             let frameView = self.view.viewWithTag(FrameViewTag)!
             
             frameView.frame.origin.y = self.view.frame.size.height / 8
@@ -1269,4 +1269,9 @@ extension AVCaptureVideoOrientation {
         default:                    self = .portrait
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
