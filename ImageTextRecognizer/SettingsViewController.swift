@@ -38,9 +38,9 @@ class SettingsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        tableView.backgroundColor = UIColor.black
-        tableView.separatorColor = UIColor(white: 1.0, alpha: 0.2)
-        tableView.indicatorStyle = .white
+        //tableView.backgroundColor = UIColor.black
+        //tableView.separatorColor = UIColor(white: 1.0, alpha: 0.2)
+        //tableView.indicatorStyle = .white
         
         // Remove done button for iPad
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
@@ -213,6 +213,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    /*
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if section == 0 {
             view.tintColor = UIColor.black
@@ -243,5 +244,5 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.black
-    }
+    }*/
 }

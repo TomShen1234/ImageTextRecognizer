@@ -86,7 +86,6 @@
 		D02697A21E54932100824437 /* DeviceIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceIdentifier.swift; sourceTree = "<group>"; };
 		D046AA151E9371C300D7EF1F /* ChangeProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeProviderViewController.swift; sourceTree = "<group>"; };
 		D04C7891213B9AB100E98F2B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		D0596375239934C7005E7CFA /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/Main.strings"; sourceTree = "<group>"; };
 		D07636341E93740800956792 /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Translator.swift; path = ../Translator.swift; sourceTree = "<group>"; };
 		D07636361E93755D00956792 /* ITRError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITRError.swift; sourceTree = "<group>"; };
 		D08F59621E71574400DC226C /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
@@ -309,7 +308,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				CA6505521CE7450F0040CE97 /* Base */,
-				D0596375239934C7005E7CFA /* zh-Hans-CN */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

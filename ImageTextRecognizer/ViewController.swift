@@ -26,6 +26,9 @@ class ViewController: UIViewController {
     var telephotoCaptureDevice: AVCaptureDevice?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer!
     
+    var allCameras = [AVCaptureDevice]()
+    var currentCamera = 0
+    
     @IBOutlet var telephotoButton: UIBarButtonItem!
     @IBOutlet var mainNavigationItem: UINavigationItem!
     
@@ -62,11 +65,6 @@ class ViewController: UIViewController {
     var portraitCameraViewBounds: CGRect? = nil
     var portraitCameraPreviewLayerBounds: CGRect? = nil
     var startedInLandscape: Bool = false
-    
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,39 +116,45 @@ class ViewController: UIViewController {
             // Disable the recognize button and don't setup camera if on simulator
             recognizeButton.isEnabled = false
         #else
-            captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
-            telephotoCaptureDevice = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInTelephotoCamera, for: AVMediaType.video, position: .back)
-            
-            //let identifier = UIDevice.current.identifier()
-            //if identifier != "iPhone9,2" && identifier != "iPhone9,4" {
-            if telephotoCaptureDevice == nil {
-                var items = self.mainNavigationItem.leftBarButtonItems
-                let index = items?.firstIndex(of: self.telephotoButton)
-                items?.remove(at: index!)
-                self.mainNavigationItem.leftBarButtonItems = items
-            } else {
-                telephotoButton.action = #selector(telephotoPressed)
-            }
-            
-            if (self.captureDevice?.hasTorch)! == false {
-                var items = self.mainNavigationItem.leftBarButtonItems
-                let index = items?.firstIndex(of: self.flashButton)
-                items?.remove(at: index!)
-                self.mainNavigationItem.leftBarButtonItems = items
-            }
-            
-            // Test Code
-            //cameraView.backgroundColor = UIColor.blue
-            
-            self.photoOutput = AVCapturePhotoOutput()
-            
-            self.captureSession.addOutput(self.photoOutput)
-            
-            do {
-                try self.captureSession.addInput(AVCaptureDeviceInput(device: self.captureDevice!))
-            } catch let error {
-                print("\(error)")
-            }
+        let discoverySession: AVCaptureDevice.DiscoverySession
+        if #available(iOS 13, *) {
+            discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInTelephotoCamera, .builtInUltraWideCamera], mediaType: .video, position: .back)
+        } else {
+            discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInTelephotoCamera], mediaType: .video, position: .back)
+        }
+        
+        allCameras = discoverySession.devices
+        
+        captureDevice = allCameras.first!
+        
+        if allCameras.count == 1 {
+            var items = self.mainNavigationItem.leftBarButtonItems
+            let index = items?.firstIndex(of: self.telephotoButton)
+            items?.remove(at: index!)
+            self.mainNavigationItem.leftBarButtonItems = items
+        } else {
+            telephotoButton.action = #selector(telephotoPressed)
+        }
+        
+        if (self.captureDevice?.hasTorch)! == false {
+            var items = self.mainNavigationItem.leftBarButtonItems
+            let index = items?.firstIndex(of: self.flashButton)
+            items?.remove(at: index!)
+            self.mainNavigationItem.leftBarButtonItems = items
+        }
+        
+        // Test Code
+        //cameraView.backgroundColor = UIColor.blue
+        
+        self.photoOutput = AVCapturePhotoOutput()
+        
+        self.captureSession.addOutput(self.photoOutput)
+        
+        do {
+            try self.captureSession.addInput(AVCaptureDeviceInput(device: self.captureDevice!))
+        } catch let error {
+            print("\(error)")
+        }
         #endif
     }
     
@@ -218,33 +222,7 @@ class ViewController: UIViewController {
         cameraView.addSubview(snapshotView)
         
         spinner.startAnimating()
-        /*
-        cameraView.addSubview(visualEffectView)
         
-        UIView.animate(withDuration: 0.6) {
-            visualEffectView.effect = blurEffect
-        }
-        
-        // Delayed so that the blur can be added
-        delay(0.01) {
-            self.toggleTelephoto()
-            UIView.animate(withDuration: 0.7, animations: {
-                visualEffectView.effect = nil
-            }, completion: { _ in
-                visualEffectView.removeFromSuperview()
-            })
-            delay(0.3) {
-                UIView.animate(withDuration: 0.2, animations: {
-                    snapshotView.alpha = 0
-                }, completion: { _ in
-                    snapshotView.removeFromSuperview()
-                    
-                    // Re-enable the telephoto button after this animation
-                    self.telephotoButton.isEnabled = true
-                })
-            }
-        }
- */
         toggleTelephoto()
         UIView.animate(withDuration: 0.7, animations: {
             snapshotView.alpha = 0
@@ -260,22 +238,43 @@ class ViewController: UIViewController {
     
     func toggleTelephoto() {
         captureSession.beginConfiguration()
-        if wideangle {
-            telephotoButton.title = "2x"
-            let currentInput = captureSession.inputs[0]
-            captureSession.removeInput(currentInput )
-            
-            let newInput = try! AVCaptureDeviceInput(device: telephotoCaptureDevice!)
-            captureSession.addInput(newInput)
-        } else {
-            telephotoButton.title = "1x"
-            let currentInput = captureSession.inputs[0]
-            captureSession.removeInput(currentInput )
-            
-            let newInput = try! AVCaptureDeviceInput(device: captureDevice!)
-            captureSession.addInput(newInput)
+        
+        let currentInput = captureSession.inputs[0]
+        captureSession.removeInput(currentInput)
+        
+        currentCamera += 1
+        if currentCamera == allCameras.count {
+            currentCamera = 0
         }
-        wideangle = !wideangle
+        let nextCamera = allCameras[currentCamera]
+        let newInput = try! AVCaptureDeviceInput(device: nextCamera)
+        captureSession.addInput(newInput)
+        
+        // Set label
+        let labelStr: String
+        let type = nextCamera.deviceType
+        if #available(iOS 13, *) {
+            switch type {
+            case .builtInUltraWideCamera:
+                labelStr = "0.5x"
+            case .builtInWideAngleCamera:
+                labelStr = "1x"
+            case .builtInTelephotoCamera:
+                labelStr = "2x"
+            default:
+                labelStr = "Next"
+            }
+        } else {
+            switch type {
+            case .builtInWideAngleCamera:
+                labelStr = "1x"
+            case .builtInTelephotoCamera:
+                labelStr = "2x"
+            default:
+                labelStr = "Next"
+            }
+        }
+        telephotoButton.title = labelStr
         
         captureSession.commitConfiguration()
     }
@@ -357,12 +356,17 @@ class ViewController: UIViewController {
                         self.cameraPreviewLayer.connection?.videoOrientation = videoOrientation
                     }
                     
-                    self.cameraPreviewLayer.frame = self.cameraView.layer.frame
+                    self.cameraPreviewLayer.frame = self.cameraView.layer.bounds
                     
-                    // Slightly lower camera preview layer on iPhone X
+                    // Slightly lower camera preview layer on tall iPhones
                     let screenBounds = UIScreen.main.bounds
-                    if screenBounds.width == 1125 / 3 || screenBounds.height == 2436 / 3 {
+                    if (screenBounds.width == 1125 / 3 || screenBounds.height == 2436 / 3) {
                         self.cameraPreviewLayer.frame.origin.y += 15
+                    }
+                    
+                    // 6.1" LCD and 6.5" OLED
+                    if (screenBounds.width == 414 || screenBounds.height == 896) {
+                        self.cameraPreviewLayer.frame.origin.y += 25
                     }
                     
                     self.cameraView.layer.addSublayer(self.cameraPreviewLayer)
@@ -407,14 +411,14 @@ class ViewController: UIViewController {
     
     func toggleTorch(_ on: Bool) -> Bool {
         captureSession.beginConfiguration()
-        let currentCaptureDevice = wideangle ? captureDevice : telephotoCaptureDevice
+        let currentCaptureDevice = allCameras[currentCamera]
         do {
-            try currentCaptureDevice?.lockForConfiguration()
+            try currentCaptureDevice.lockForConfiguration()
         } catch {
             return false
         }
-        currentCaptureDevice?.torchMode = (on == true) ? AVCaptureDevice.TorchMode.on : AVCaptureDevice.TorchMode.off
-        currentCaptureDevice?.unlockForConfiguration()
+        currentCaptureDevice.torchMode = (on == true) ? AVCaptureDevice.TorchMode.on : AVCaptureDevice.TorchMode.off
+        currentCaptureDevice.unlockForConfiguration()
         captureSession.commitConfiguration()
         return true
     }
