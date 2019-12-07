@@ -83,11 +83,11 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(captureSessionInterruptionBegan(_:)), name: Notification.Name.AVCaptureSessionWasInterrupted, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(captureSessionInterruptionDidEnd), name: Notification.Name.AVCaptureSessionInterruptionEnded, object: nil)
         
-        resultTextView.layer.borderColor = UIColor(red: 1, green: 190.0/255.0, blue: 0, alpha: 1).cgColor
-        resultTextView.layer.borderWidth = 3.0
+        resultTextView.layer.borderColor = UIColor(white: 0.9, alpha: 1).cgColor
+        resultTextView.layer.borderWidth = 2.0
         
-        translationResultTextView.layer.borderColor = UIColor.blue.cgColor
-        translationResultTextView.layer.borderWidth = 3.0
+        translationResultTextView.layer.borderColor = UIColor(white: 0.9, alpha: 1).cgColor
+        translationResultTextView.layer.borderWidth = 2.0
         
         noTextFound = false
         
@@ -1156,7 +1156,7 @@ extension UIImage {
 #if IOS_SIMULATOR
 #else
 extension ViewController: AVCapturePhotoCaptureDelegate {
-    func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
             
@@ -1166,7 +1166,7 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
             self.view.addSubview(self.resultTextView)
             self.resultTextView.text = "Can not take image: \(error.localizedDescription)"
         } else {
-            if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
+            if let dataImage = photo.fileDataRepresentation() {
                 let resultImage = UIImage(data: dataImage)!
                 
                 let selectedFrame = self.view.viewWithTag(FrameViewTag)!.frame
@@ -1192,18 +1192,9 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
                     self.resultTextView.text = NSLocalizedString("Recognizing...", comment: "Recognizing Text")
                     
                     self.recognizeImage(croppedImage)
-                    
-                    // Test display image
-                    //let imageView = UIImageView(image: croppedImage)
-                    //imageView.center = self.cameraView.center
-                    //self.cameraView.addSubview(imageView)
-                    
-                    // Test Code
-                    //self.translateText("Hello World!")
                 }
             }
         }
-        
     }
 }
 #endif
@@ -1251,6 +1242,8 @@ extension AVCaptureVideoOrientation {
             case .landscapeRight:       return .landscapeRight
             case .portrait:             return .portrait
             case .portraitUpsideDown:   return .portraitUpsideDown
+            @unknown default:
+                return .unknown
             }
         }
     }
