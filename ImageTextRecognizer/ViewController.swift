@@ -343,6 +343,7 @@ class ViewController: UIViewController {
                     // MARK: Initialize camera and rotation
                     // Resize camera view for iPads so camera preview fills up screen
                     if UI_USER_INTERFACE_IDIOM() == .pad {
+                        /*
                         let currentOrientation = UIApplication.shared.statusBarOrientation
                         
                         if currentOrientation == .portrait {
@@ -354,6 +355,14 @@ class ViewController: UIViewController {
                         // Set video orientation for iPad
                         let videoOrientation = AVCaptureVideoOrientation(ui: currentOrientation)
                         self.cameraPreviewLayer.connection?.videoOrientation = videoOrientation
+                        */
+                        
+                        let newOrientation = AVCaptureVideoOrientation(ui: UIApplication.shared.statusBarOrientation)
+                        self.cameraPreviewLayer?.connection?.videoOrientation = newOrientation
+                        for connection in self.photoOutput.connections {
+                            connection.videoOrientation = newOrientation
+                        }
+                        self.cameraPreviewLayer.frame = self.cameraView.layer.frame
                     }
                     
                     self.cameraPreviewLayer.frame = self.cameraView.layer.bounds
@@ -985,7 +994,7 @@ class ViewController: UIViewController {
             }
             self.cameraPreviewLayer.frame = self.cameraView.layer.frame
             
-            cameraView.backgroundColor = .red
+            //cameraView.backgroundColor = .red
             
             rotationSnapshotView.removeFromSuperview()
             UIView.animate(withDuration: 0.1, animations: {
@@ -993,24 +1002,6 @@ class ViewController: UIViewController {
             }, completion: { _ in
                 self.rotationVEView.removeFromSuperview()
             })
-            
-            /*
-            //captureSession = AVCaptureSession()
-            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { granted in
-                DispatchQueue.main.async(execute: {
-                    //self.captureSession.sessionPreset = AVCaptureSession.Preset.high
-                    if(self.captureDevice != nil){
-                        if granted {
-                            self.loaded = false
-                            self.loading = false
-                            self.beginSession()
-                        }
-                    }
-                })
-            })
-            */
-            // Test Code
-            //cameraPreviewLayer.backgroundColor = UIColor.red.cgColor
         }
     }
     
